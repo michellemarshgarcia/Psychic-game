@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html lang="en-us">	
+<head>
+	<meta charset="utf-8">
+
+	<title>Letter Guessing Game</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		
+		var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+		var win = 0;
+		var loses = 0;
+		var guesses = 9;
+		var guessedLetters = [];
+		var computerChoice = alphabet[Math.floor(Math.random() *  alphabet.length)];
+
+
+		document.onkeyUp = function(event) {
+		var userGuess = (event.key).toLowerCase();
+    	
+			if (guessedLetters.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess) >= 0) {
+				guessedLetters[guessedLetters.length]=userGuess;
+				guesses--;
+			}
+
+    		if(userGuess === computerChoice){
+        	wins++;
+        	guesses = 8;
+        	guessedLetters = [];
+        	
+        	console.log("Wins: " + wins + "Losses: " + losses + "Guesses: " + guesses + "Guessed Letters: " + guessedLetters);
+
+    		}
+
+   			if(guesses === 0) {
+        	losses++;
+        	guesses = 8;
+        	guessedLetters = [];
+        	
+        	console.log("Wins: " + wins + "Losses: " + losses + "Guesses: " + guesses + "Guessed Letters: " + guessedLetters);
+        }
+
+			else {
+        		guesses--;
+
+    		}
+
+    		reset();
+      
+
+
+
+
+    document.getElementById('#wins').innerHTML = "Wins: " + wins;
+
+    document.getElementById('#losses').innerHTML = "Losses: " + losses;
+
+    document.getElementById('#guesses').innerHTML = "Guesses left: " + guesses;
+
+    document.getElementById('#userGuess').innerHTML + "Your Guesses: " + userGuess;
+
+};
+
+
+</script>
+
+
+	<div id = "Letter Guessing">
+		<h1>The Letter Guessing Game</h1>
+		<h2>Pick a letter</h2>
+		<h3>Wins:
+      	<p id="wins"></p>
+    	</h3>
+   	 	<h3>Loses:
+      	<p id="losses"></p>
+    	</h3>
+    	<h3>Guesses left:
+      	<p id="guesses"></p>
+    	</h3>
+    	<h3>Letters Guessed:
+    	<p id="userGuess"></p>
+    	</h3>
+		
+	</div>
+
+
+
+</body>
+</html>
+
+	
+
+	
